@@ -1,0 +1,14 @@
+C:\Users\miran\Documents\TiendaConsolaV1.2\bin\Debug\net10.0\TiendaConsolaV1.2.exe
+C:\Users\miran\Documents\TiendaConsolaV1.2\bin\Debug\net10.0\TiendaConsolaV1.2.deps.json
+C:\Users\miran\Documents\TiendaConsolaV1.2\bin\Debug\net10.0\TiendaConsolaV1.2.runtimeconfig.json
+C:\Users\miran\Documents\TiendaConsolaV1.2\bin\Debug\net10.0\TiendaConsolaV1.2.dll
+C:\Users\miran\Documents\TiendaConsolaV1.2\bin\Debug\net10.0\TiendaConsolaV1.2.pdb
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.AssemblyInfoInputs.cache
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.AssemblyInfo.cs
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.csproj.CoreCompileInputs.cache
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.dll
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\refint\TiendaConsolaV1.2.dll
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.pdb
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.genruntimeconfig.cache
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\ref\TiendaConsolaV1.2.dll
