@@ -3,8 +3,12 @@ Inventario inv = new Inventario();
 Rol admin = new Rol("admin", manipula: true, compra: false);
 Rol cliente = new Rol("cliente", manipula: false, compra: true);
 GestionUsuarios gestor = new GestionUsuarios();
-gestor.AgregarUsuario("Manuel", "123", admin);
-gestor.AgregarUsuario("Paco", "paco", cliente);
+//usuarios para poder hacer login
+gestor.AgregarUsuario("Manuel", "123", admin, false);
+gestor.AgregarUsuario("Paco", "paco", cliente, false);
+gestor.AgregarUsuario("SuperPaco", "paco123", cliente, true);
+//
+Descuento desc = new Descuento();;
 inv.AgregarProducto("Chubasquero para peces", "asd", 120.00, 50);
 inv.AgregarProducto("Zapatos para tortugas", "qwe", 300.50, 20);
 inv.AgregarProducto("Colonia matamosquitos", "zxc", 500.01, 10);
@@ -19,9 +23,9 @@ while(corriendo)
     if(usuario != null)
     {
         if(usuario.rol.PuedeManipular)
-            new MenuAdmin(inv).Iniciar();
+            new MenuAdmin(inv, desc).Iniciar();
         else if(usuario.rol.puedeComprar)
-            new MenuCliente(inv).Iniciar();
+            new MenuCliente(inv, usuario, desc).Iniciar();
 
         Console.WriteLine("Sesión cerrada");
     }

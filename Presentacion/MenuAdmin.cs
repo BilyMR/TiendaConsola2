@@ -3,9 +3,11 @@ namespace TiendaConsolaV1_2
     class MenuAdmin
     {
         private Inventario inv;
-        public MenuAdmin(Inventario i)
+        private Descuento desc;
+        public MenuAdmin(Inventario i, Descuento d)
         {
             inv = i;
+            desc = d;
         }
         private void Agregar()
         {
@@ -43,7 +45,7 @@ namespace TiendaConsolaV1_2
                 Console.WriteLine("Error");
             }
         }
-        private void Actualizar()
+        private void ActualizarProducto()
         {
             Console.Write("Nombre del producto: ");
             string? nombre = Console.ReadLine();
@@ -62,6 +64,14 @@ namespace TiendaConsolaV1_2
                 Console.WriteLine("Error");
             }
         }
+        private void ActualizarDescuento()
+        {
+            Console.Write("Nuevo porcentaje de descuento para cliente VIP: ");
+            desc.porcentaje = double.Parse(Console.ReadLine());
+            Console.Write("Compra mínima para aplicar descuento: ");
+            desc.cap = double.Parse(Console.ReadLine());
+            Console.WriteLine("Descuento actualizado correctamente");
+        }
 
         public void Iniciar()
         {
@@ -69,26 +79,30 @@ namespace TiendaConsolaV1_2
             while (!salir)
             {
                 Console.WriteLine("\n=== Menú Admin ===");
-                Console.WriteLine("1. Agregar producto");
-                Console.WriteLine("2. Eliminar producto");
+                Console.WriteLine("1. Ver producto");
+                Console.WriteLine("2. Agregar producto");
                 Console.WriteLine("3. Actualizar precio");
-                Console.WriteLine("4. Ver productos");
+                Console.WriteLine("4. Eliminar productos");
+                Console.WriteLine("5. Actualizar descuento de cliente");
                 Console.WriteLine("0. Salir");
                 Console.Write("Opción: ");
 
                 switch (Console.ReadLine())
                 {
                     case "1": 
-                        Agregar(); 
+                        inv.ListarProductos(); 
                         break;
                     case "2":
-                        Eliminar();
+                        Agregar();
                         break;
                     case "3":
-                        Actualizar();
+                        ActualizarProducto();
                         break;
                     case "4":
-                        inv.ListarProductos();
+                        Eliminar();
+                        break;
+                    case "5":
+                        ActualizarDescuento();
                         break;
                     case "0":
                         salir = true;

@@ -14,10 +14,10 @@ namespace TiendaConsolaV1_2
             numUsuarios = 0;
         }
 
-        public bool AgregarUsuario(string n, string c, Rol r)
+        public bool AgregarUsuario(string n, string c, Rol r, bool t)
         {
             if(numUsuarios >= max) return false;
-            usuarios[numUsuarios++] = new Usuario(n, c, r);
+            usuarios[numUsuarios++] = new Usuario(n, c, r, t);
             return true;
         }
 

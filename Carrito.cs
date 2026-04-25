@@ -7,6 +7,7 @@ namespace TiendaConsolaV1_2
         public int numItems{get; private set;}
         private int max = 100;
 
+
         public Carrito()
         {
             productos = new Producto[max];
@@ -43,11 +44,16 @@ namespace TiendaConsolaV1_2
             return false;
         }
 
-        public double CalcularTotal()
+        public double CalcularTotal(double porcentaje = 0)
         {
+            double p     = porcentaje / 100;
             double total = 0;
-            for(int i = 0; i < numItems; i++)
+            for (int i = 0; i < numItems; i++)
                 total += productos[i].precio * cantidades[i];
+
+            if (porcentaje > 0)
+                total *= 1 - p;
+
             return total;
         }
 
@@ -71,12 +77,18 @@ namespace TiendaConsolaV1_2
             numItems = 0;
         }
 
-        public void Mostrar()
+        public void Mostrar(double porcentaje = 0)
         {
-            for(int i = 0; i < numItems; i++)
-                Console.WriteLine($"{i+1}. {productos[i].nombre} x{cantidades[i]} - ${productos[i].precio * cantidades[i]}");
-            
-            Console.WriteLine($"Total: ${CalcularTotal()}");
+            double p = porcentaje / 100;
+            for (int i = 0; i < numItems; i++)
+            {
+                double subtotal = productos[i].precio * cantidades[i];
+                if (porcentaje > 0)
+                    Console.WriteLine($"{i + 1}. {productos[i].nombre} x{cantidades[i]} - ${subtotal} (Con descuento: ${subtotal * (1 - p)})");
+                else
+                    Console.WriteLine($"{i + 1}. {productos[i].nombre} x{cantidades[i]} - ${subtotal}");
+            }
+            Console.WriteLine($"Total: ${CalcularTotal(porcentaje)}");
         }
     }
 }

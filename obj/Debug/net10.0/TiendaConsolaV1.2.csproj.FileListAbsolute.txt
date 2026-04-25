@@ -12,3 +12,4 @@ C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\refint\TiendaConsol
 C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.pdb
 C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.genruntimeconfig.cache
 C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\ref\TiendaConsolaV1.2.dll
+C:\Users\miran\Documents\TiendaConsolaV1.2\obj\Debug\net10.0\TiendaConsolaV1.2.sourcelink.json

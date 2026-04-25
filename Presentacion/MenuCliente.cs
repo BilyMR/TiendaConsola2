@@ -4,9 +4,13 @@ namespace TiendaConsolaV1_2
     {
         private Inventario inv;
         private Carrito car;
-        public MenuCliente(Inventario i)
+        private Usuario usuario;
+        private Descuento desc;
+        public MenuCliente(Inventario i, Usuario u, Descuento d)
         {
             inv = i;
+            usuario = u;
+            desc = d;
             car = new Carrito();
         }
 
@@ -37,24 +41,37 @@ namespace TiendaConsolaV1_2
 
         public void Confirmar()
         {
-            if(car.numItems == 0)
+            if (car.numItems == 0)
             {
-                Console.WriteLine("El carrito es muy empty");
+                Console.WriteLine("El carrito está vacío");
                 return;
             }
+
+            double total      = car.CalcularTotal();
+            double porcentaje = 0;
+
+            if (usuario.esVip)
+            {
+                porcentaje = desc.porcentaje;
+                if (total > desc.cap)
+                    porcentaje += desc.porcentajeExtra;
+            }
+
+
             Console.WriteLine("\n=== Resumen de compra ===");
-            car.Mostrar();
+            car.Mostrar(desc.porcentaje);
+
             Console.Write("¿Confirmar compra? (s/n): ");
             string respuesta = Console.ReadLine();
 
-            if(respuesta == "s")
+            if (respuesta == "s")
             {
                 bool exito = car.Confirmar(inv);
                 if (exito)
                 {
                     Console.WriteLine("Compra realizada con éxito");
-                    Console.WriteLine("Factura: ");
-                    car.Mostrar();
+                    Console.WriteLine("Factura:");
+                    car.Mostrar(porcentaje);
                     car.Vaciar();
                 }
                 else
