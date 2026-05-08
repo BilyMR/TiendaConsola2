@@ -1,17 +1,30 @@
+using System.Reflection;
+
 namespace TiendaConsolaV1_2
 {
     class MenuCliente
     {
         private Inventario inv;
         private Carrito car;
-        private Usuario usuario;
+        private UsuarioCliente usuario;
         private Descuento desc;
-        public MenuCliente(Inventario i, Usuario u, Descuento d)
+        public MenuCliente(Inventario i, UsuarioCliente u, Descuento d)
         {
             inv = i;
             usuario = u;
             desc = d;
             car = new Carrito();
+        }
+
+        private double ObtenerPorcentaje()
+        {
+            if(!usuario.esVip) return 0;
+            double porcentaje = desc.porcentaje;
+            if(car.CalcularTotal() > desc.cap)
+            {
+                porcentaje += desc.porcentajeExtra;
+            }
+            return porcentaje;
         }
 
         private void AgregarToCarrito()
@@ -48,15 +61,7 @@ namespace TiendaConsolaV1_2
             }
 
             double total      = car.CalcularTotal();
-            double porcentaje = 0;
-
-            if (usuario.esVip)
-            {
-                porcentaje = desc.porcentaje;
-                if (total > desc.cap)
-                    porcentaje += desc.porcentajeExtra;
-            }
-
+            double porcentaje = ObtenerPorcentaje();
 
             Console.WriteLine("\n=== Resumen de compra ===");
             car.Mostrar(desc.porcentaje);
@@ -105,7 +110,7 @@ namespace TiendaConsolaV1_2
                         AgregarToCarrito(); 
                         break;
                     case "3": 
-                        car.Mostrar(); 
+                        car.Mostrar(ObtenerPorcentaje()); 
                         break;
                     case "4": 
                         Confirmar(); 

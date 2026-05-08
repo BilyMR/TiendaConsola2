@@ -14,10 +14,17 @@ namespace TiendaConsolaV1_2
             numUsuarios = 0;
         }
 
-        public bool AgregarUsuario(string n, string c, Rol r, bool t)
+        public bool AgregarAdmin(string n, string c)
         {
             if(numUsuarios >= max) return false;
-            usuarios[numUsuarios++] = new Usuario(n, c, r, t);
+            usuarios[numUsuarios++] = new UsuarioAdmin(n, c);
+            return true;
+        }
+
+        public bool AgregarCliente(string n, string c, bool v)
+        {
+            if(numUsuarios >= max) return false;
+            usuarios[numUsuarios++] = new UsuarioCliente(n, c, v);
             return true;
         }
 

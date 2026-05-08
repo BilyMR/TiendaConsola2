@@ -1,12 +1,10 @@
 ﻿using TiendaConsolaV1_2;
 Inventario inv = new Inventario();
-Rol admin = new Rol("admin", manipula: true, compra: false);
-Rol cliente = new Rol("cliente", manipula: false, compra: true);
 GestionUsuarios gestor = new GestionUsuarios();
 //usuarios para poder hacer login
-gestor.AgregarUsuario("Manuel", "123", admin, false);
-gestor.AgregarUsuario("Paco", "paco", cliente, false);
-gestor.AgregarUsuario("SuperPaco", "paco123", cliente, true);
+gestor.AgregarAdmin("Manuel", "123");
+gestor.AgregarCliente("Paco", "paco", false);
+gestor.AgregarCliente("SuperPaco", "paco123", true);
 //
 Descuento desc = new Descuento();;
 inv.AgregarProducto("Chubasquero para peces", "asd", 120.00, 50);
@@ -22,10 +20,10 @@ while(corriendo)
 
     if(usuario != null)
     {
-        if(usuario.rol.PuedeManipular)
+        if(usuario is UsuarioAdmin)
             new MenuAdmin(inv, desc).Iniciar();
-        else if(usuario.rol.puedeComprar)
-            new MenuCliente(inv, usuario, desc).Iniciar();
+        else if(usuario is UsuarioCliente cliente1)
+            new MenuCliente(inv, cliente1, desc).Iniciar();
 
         Console.WriteLine("Sesión cerrada");
     }
