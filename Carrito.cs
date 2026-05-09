@@ -17,10 +17,10 @@ namespace TiendaConsolaV1_2
 
         public bool AgregarItem(Producto p, int cantidad)
         {
-            if(numItems >= max) return false;
-            if(p.cantidad < cantidad) return false;
+            if (numItems >= max)             return false;
+            if (!p.PuedeAgregar(cantidad))   return false;
 
-            productos[numItems] = p;
+            productos[numItems]  = p;
             cantidades[numItems] = cantidad;
             numItems++;
             return true;
@@ -84,9 +84,9 @@ namespace TiendaConsolaV1_2
             {
                 double subtotal = productos[i].precio * cantidades[i];
                 if (porcentaje > 0)
-                    Console.WriteLine($"{i + 1}. {productos[i].nombre} x{cantidades[i]} - ${subtotal} (Con descuento: ${subtotal * (1 - p)})");
+                    Console.WriteLine($"{i + 1}. [{productos[i].Tipo}] {productos[i].nombre} x{cantidades[i]} - ${subtotal} => ${subtotal * (1 - p)}");
                 else
-                    Console.WriteLine($"{i + 1}. {productos[i].nombre} x{cantidades[i]} - ${subtotal}");
+                    Console.WriteLine($"{i + 1}. [{productos[i].Tipo}] {productos[i].nombre} x{cantidades[i]} - ${subtotal}");
             }
             Console.WriteLine($"Total: ${CalcularTotal(porcentaje)}");
         }

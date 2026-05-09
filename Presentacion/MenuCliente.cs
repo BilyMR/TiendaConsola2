@@ -64,7 +64,7 @@ namespace TiendaConsolaV1_2
             double porcentaje = ObtenerPorcentaje();
 
             Console.WriteLine("\n=== Resumen de compra ===");
-            car.Mostrar(desc.porcentaje);
+            car.Mostrar(porcentaje);
 
             Console.Write("¿Confirmar compra? (s/n): ");
             string respuesta = Console.ReadLine();
